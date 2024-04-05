@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import "./index.css";
+import Home from "./pages/Home";
 import reportWebVitals from "./reportWebVitals";
 
 const theme = createTheme({
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "home",
-        element: <div>home</div>,
+        element: <Home />,
       },
       {
         path: "login",
