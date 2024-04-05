@@ -1,11 +1,7 @@
-import './Right.css';
+import "./Right.css";
 
-function Right() {
-  return (
-    <div className="Right">
-		Right
-	</div>
-  );
+function Right({ children }) {
+  return <div className="right">{children}</div>;
 }
 
 export default Right;
