@@ -10,6 +10,7 @@ import {
 import App from "./App";
 import "./index.css";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
 
 const theme = createTheme({
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <div>login</div>,
+        element: <Login />,
       },
     ],
   },
