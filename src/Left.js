@@ -1,10 +1,14 @@
 import { IconHome, IconLogin, IconLogout } from "@tabler/icons-react";
 import { NavLink } from "react-router-dom";
 import "./Left.css";
+import useUserStore from "./hooks/useUserStore";
 
 const data = [{ link: "/home", label: "Home", icon: IconHome }];
 
 function Left() {
+  const user = useUserStore((state) => state.user);
+  const resetUser = useUserStore((state) => state.resetUser);
+
   const links = data.map((item) => (
     <NavLink className="link" to={item.link} key={item.label}>
       <item.icon className="linkIcon" stroke={1.5} />
@@ -12,18 +16,26 @@ function Left() {
     </NavLink>
   ));
 
+  const handleLogout = () => {
+    resetUser();
+  };
+
   return (
     <nav className="navbar">
       <div className="navbarMain">{links}</div>
       <div className="footer">
-        <NavLink className="link" to="/login">
-          <IconLogin className="linkIcon" stroke={1.5} />
-          <span>Login</span>
-        </NavLink>
-        <a className="link" href="#">
-          <IconLogout className="linkIcon" stroke={1.5} />
-          <span>Logout</span>
-        </a>
+        {!user && (
+          <NavLink className="link" to="/login">
+            <IconLogin className="linkIcon" stroke={1.5} />
+            <span>Login</span>
+          </NavLink>
+        )}
+        {user && (
+          <div className="link" onClick={handleLogout}>
+            <IconLogout className="linkIcon" stroke={1.5} />
+            <span>Logout</span>
+          </div>
+        )}
       </div>
     </nav>
   );

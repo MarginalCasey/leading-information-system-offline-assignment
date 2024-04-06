@@ -2,10 +2,13 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Left from "./Left";
 import Right from "./Right";
+import useUserStore from "./hooks/useUserStore";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
 function App() {
+  const user = useUserStore((state) => state.user);
+
   return (
     <div className="App">
       <Left />
@@ -13,7 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" Component={Home} />
-          <Route path="/login" Component={Login} />
+          <Route element={user ? <Navigate to="/" replace /> : undefined}>
+            <Route path="/login" Component={Login} />
+          </Route>
         </Routes>
       </Right>
     </div>
