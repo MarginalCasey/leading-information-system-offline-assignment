@@ -1,5 +1,6 @@
 import { createTheme, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -12,6 +13,8 @@ import "./index.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
+
+const queryClient = new QueryClient();
 
 const theme = createTheme({
   /** Put your mantine theme override here */
@@ -41,9 +44,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MantineProvider theme={theme}>
-      <RouterProvider router={router} />
-    </MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider theme={theme}>
+        <RouterProvider router={router} />
+      </MantineProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
