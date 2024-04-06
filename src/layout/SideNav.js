@@ -1,11 +1,11 @@
 import { IconHome, IconLogin, IconLogout, IconUser } from "@tabler/icons-react";
 import { NavLink } from "react-router-dom";
-import "./Left.css";
-import useUserStore from "./hooks/useUserStore";
+import useUserStore from "../hooks/useUserStore";
+import "./SideNav.css";
 
 const data = [{ link: "/home", label: "Home", icon: IconHome }];
 
-function Left() {
+function SideNav() {
   const user = useUserStore((state) => state.user);
   const resetUser = useUserStore((state) => state.resetUser);
 
@@ -46,4 +46,4 @@ function Left() {
   );
 }
 
-export default Left;
+export default SideNav;

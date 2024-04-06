@@ -1,19 +1,20 @@
+import "@mantine/core/styles.css";
 import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Left from "./Left";
-import Right from "./Right";
-import useUserStore from "./hooks/useUserStore";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import User from "./pages/User";
+import useUserStore from "../hooks/useUserStore";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import User from "../pages/User";
+import "./Layout.css";
+import Main from "./Main";
+import SideNav from "./SideNav";
 
-function App() {
+function Layout() {
   const user = useUserStore((state) => state.user);
 
   return (
-    <div className="App">
-      <Left />
-      <Right>
+    <div className="layout">
+      <SideNav />
+      <Main>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" Component={Home} />
@@ -24,9 +25,9 @@ function App() {
             <Route path="/login" Component={Login} />
           </Route>
         </Routes>
-      </Right>
+      </Main>
     </div>
   );
 }
 
-export default App;
+export default Layout;
