@@ -20,12 +20,12 @@ const theme = createTheme({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/home" replace />,
-  },
-  {
-    path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/home" replace />,
+      },
       {
         path: "home",
         element: <Home />,
