@@ -1,0 +1,14 @@
+.tabs {
+  width: 100%;
+}
+
+.tab-content {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-options > div {
+  max-height: unset !important;
+}

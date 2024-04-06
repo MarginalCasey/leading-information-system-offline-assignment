@@ -6,6 +6,6 @@
 
 .page-container {
   margin: 0 auto;
-  padding-left: var(--mantine-spacing-md);
+  padding: var(--mantine-spacing-md);
   max-width: 1080px;
 }
