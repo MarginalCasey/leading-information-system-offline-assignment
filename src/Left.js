@@ -1,4 +1,4 @@
-import { IconHome, IconLogin, IconLogout } from "@tabler/icons-react";
+import { IconHome, IconLogin, IconLogout, IconUser } from "@tabler/icons-react";
 import { NavLink } from "react-router-dom";
 import "./Left.css";
 import useUserStore from "./hooks/useUserStore";
@@ -24,7 +24,12 @@ function Left() {
     <nav className="navbar">
       <div className="navbarMain">{links}</div>
       <div className="footer">
-        {!user && (
+        {user ? (
+          <NavLink className="link" to="/user">
+            <IconUser className="linkIcon" stroke={1.5} />
+            <span>User</span>
+          </NavLink>
+        ) : (
           <NavLink className="link" to="/login">
             <IconLogin className="linkIcon" stroke={1.5} />
             <span>Login</span>
